@@ -1,0 +1,242 @@
+@charset "utf-8";
+
+/* Configuration des variables Modernes */
+:root {
+    --bg: #0b0e14;
+    --card: #151921;
+    --border: #2d333b;
+    --accent: #00dc82; /* Vert émeraude moderne */
+    --accent-glow: rgba(0, 220, 130, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+    --button-hover: #00f08d;
+    --danger: #ff4757;
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Inter', 'Roboto', system-ui, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header avec Dégradé Animé */
+.link-title {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.link-title > a {
+    font-size: 42px;
+    font-weight: 800;
+    text-decoration: none;
+    background: linear-gradient(90deg, #00dc82, #36e4da, #00dc82);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-flow 3s linear infinite;
+}
+
+@keyframes gradient-flow {
+    to { background-position: 200% center; }
+}
+
+/* Conteneur Principal */
+.main-contents {
+    margin: 0 auto;
+    width: 95%;
+    max-width: 1000px;
+    padding: 20px;
+}
+
+/* Zones de Code (Textarea) */
+.code-area {
+    margin-bottom: 30px;
+    background: var(--card);
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    height: 250px;
+    background: transparent;
+    border: none;
+    color: #e5e7eb;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 15px;
+    padding: 10px;
+    resize: none;
+    outline: none;
+}
+
+.length {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 10px 0 0 5px;
+    border-top: 1px solid var(--border);
+    margin-top: 10px;
+}
+
+/* Boutons */
+#obfuscate-button {
+    width: 100%;
+    padding: 18px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 12px;
+    border: none;
+    background: var(--accent);
+    color: #0b0e14;
+    cursor: pointer;
+    margin: 20px 0 40px 0;
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+#obfuscate-button:hover {
+    transform: translateY(-3px);
+    background: var(--button-hover);
+    box-shadow: 0 0 30px var(--accent-glow);
+}
+
+#run-button {
+    background: transparent;
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    float: right;
+}
+
+#run-button:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* Sections Options & Blacklist */
+fieldset {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+legend {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 0 15px;
+}
+
+.fieldset-area {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+}
+
+.title::before {
+    content: "";
+    width: 4px;
+    height: 18px;
+    background: var(--accent);
+    margin-right: 12px;
+    border-radius: 10px;
+}
+
+/* Checkboxes Stylisées */
+.checkbox-area div {
+    margin-bottom: 12px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    margin-right: 10px;
+    cursor: pointer;
+    vertical-align: middle;
+    position: relative;
+}
+
+input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    color: #0b0e14;
+    font-size: 14px;
+    left: 3px;
+    top: -1px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="number"] {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 8px;
+}
+
+input:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.explain p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.github-link a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .link-title > a { font-size: 28px; }
+    .main-contents { width: 100%; }
+}
